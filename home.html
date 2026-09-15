@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="sl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Give Yourself A Reason ♡</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            background: #fff7fb;
+            color: #3b2632;
+            font-family: "Times New Roman", serif;
+        }
+
+
+        header {
+            text-align: center;
+            padding: 25px 10px 15px;
+            border-bottom: 1px dashed #d9a9bf;
+        }
+
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+
+        header p {
+            margin: 8px 0 15px;
+            font-style: italic;
+        }
+
+
+        nav a {
+            color: #3b2632;
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 15px;
+        }
+
+
+        nav a:hover {
+            color: #d95b83;
+            text-decoration: underline;
+        }
+
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+
+        .welcome {
+            text-align: center;
+            padding: 70px 20px 50px;
+        }
+
+
+        .welcome h2 {
+            font-size: 45px;
+            font-weight: normal;
+            margin: 0 0 15px;
+        }
+
+
+        .welcome p {
+            max-width: 650px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+
+        .heart {
+            color: #d95b83;
+        }
+
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: normal;
+            margin: 50px 0 25px;
+        }
+
+
+        .section-title span {
+            color: #d95b83;
+        }
+
+
+        .topics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+
+        .topic {
+            background: white;
+            border: 1px solid #d9a9bf;
+            padding: 25px;
+            box-shadow: 4px 4px 0 #e8bfd0;
+            transition: 0.2s;
+        }
+
+
+        .topic:hover {
+            transform: translateY(-4px);
+        }
+
+
+        .topic h3 {
+            margin-top: 0;
+            font-size: 23px;
+            font-weight: normal;
+        }
+
+
+        .topic h3 span {
+            color: #d95b83;
+        }
+
+
+        .topic p {
+            line-height: 1.5;
+            font-size: 16px;
+        }
+
+
+        .read {
+            color: #d95b83;
+            text-decoration: none;
+        }
+
+
+        .read:hover {
+            text-decoration: underline;
+        }
+
+
+        .about {
+            margin-top: 60px;
+            background: #fceaf2;
+            padding: 35px;
+            border: 1px dashed #d9a9bf;
+            text-align: center;
+        }
+
+
+        .about h2 {
+            font-size: 28px;
+            font-weight: normal;
+        }
+
+
+        .about p {
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+
+        .stories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+
+        .story {
+            background: white;
+            border: 1px solid #d9a9bf;
+            padding: 25px;
+            min-height: 230px;
+            box-shadow: 3px 3px 0 #e8bfd0;
+        }
+
+
+        .story .name {
+            font-size: 21px;
+            margin-bottom: 10px;
+            color: #d95b83;
+        }
+
+
+        .story p {
+            line-height: 1.5;
+            font-size: 16px;
+        }
+
+
+        .story a {
+            color: #d95b83;
+            text-decoration: none;
+        }
+
+
+        .story a:hover {
+            text-decoration: underline;
+        }
+
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 35px 10px;
+            border-top: 1px dashed #d9a9bf;
+            font-size: 14px;
+        }
+
+
+        footer a {
+            color: #d95b83;
+            text-decoration: none;
+        }
+
+
+        @media (max-width: 700px) {
+
+            .topics {
+                grid-template-columns: 1fr;
+            }
+
+
+            .stories {
+                grid-template-columns: 1fr;
+            }
+
+
+            .welcome h2 {
+                font-size: 35px;
+            }
+
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        ♥ GIVE YOURSELF A REASON ♥
+    </h1>
+
+
+    <p>
+        majhen kotiček interneta za resnične občutke
+    </p>
+
+
+    <nav>
+
+        <a href="index.html">
+            začetek
+        </a>
+
+        ♥
+
+        <a href="#topics">
+            občutki
+        </a>
+
+        ♥
+
+        <a href="#stories">
+            zgodbe
+        </a>
+
+        ♥
+
+        <a href="#about">
+            o strani
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <!-- ================= UVOD ================= -->
+
+    <section class="welcome">
+
+        <h2>
+
+            nisi sam/a.
+
+            <span class="heart">♡</span>
+
+        </h2>
+
+
+        <p>
+
+            Biti najstnik ni vedno tako preprosto,
+            kot se mogoče zdi od zunaj.
+
+            <br><br>
+
+            Šola, prijatelji, družina, družbena omrežja,
+            pričakovanja in lastne misli lahko včasih
+            postanejo preveč.
+
+            <br><br>
+
+            Tukaj se pogovarjamo o stvareh,
+            o katerih se ne pogovarjamo vedno dovolj.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- ================= TEME ================= -->
+
+    <section id="topics">
+
+
+        <h2 class="section-title">
+
+            stvari, o katerih ne govorimo dovolj
+
+            <span>♡</span>
+
+        </h2>
+
+
+        <div class="topics">
+
+
+            <div class="topic">
+
+                <h3>
+                    <span>♥</span>
+                    samopodoba
+                </h3>
+
+
+                <p>
+
+                    Način, kako vidimo sebe, ni vedno
+                    takšen, kot nas vidijo drugi.
+
+                    Primerjanje, družbena omrežja in
+                    pričakovanja lahko vplivajo na to,
+                    kako se počutimo v svojem telesu
+                    in sami s sabo.
+
+                </p>
+
+
+                <a class="read" href="self-image.html">
+
+                    preberi več →
+
+                </a>
+
+            </div>
+
+
+
+            <div class="topic">
+
+                <h3>
+                    <span>♥</span>
+                    depresija
+                </h3>
+
+
+                <p>
+
+                    Depresija ni samo slab dan ali
+                    trenutek žalosti.
+
+                    Lahko vpliva na počutje,
+                    razmišljanje, energijo in
+                    vsakdanje življenje.
+
+                </p>
+
+
+                <a class="read" href="depression.html">
+
+                    preberi več →
+
+                </a>
+
+            </div>
+
+
+
+            <div class="topic">
+
+                <h3>
+                    <span>♥</span>
+                    stres in šola
+                </h3>
+
+
+                <p>
+
+                    Testi, ocene, domače naloge in
+                    pričakovanja lahko hitro postanejo
+                    preveč.
+
+                    Občutek preobremenjenosti ne pomeni,
+                    da si šibek/šibka.
+
+                </p>
+
+
+                <a class="read" href="stress.html">
+
+                    preberi več →
+
+                </a>
+
+            </div>
+
+
+
+            <div class="topic">
+
+                <h3>
+                    <span>♥</span>
+                    osamljenost
+                </h3>
+
+
+                <p>
+
+                    Lahko si obkrožen/a z ljudmi in se
+                    vseeno počutiš osamljeno.
+
+                    Včasih je najtežji del najti nekoga,
+                    ki mu lahko zaupaš.
+
+                </p>
+
+
+                <a class="read" href="loneliness.html">
+
+                    preberi več →
+
+                </a>
+
+            </div>
+
+
+
+            <div class="topic">
+
+                <h3>
+                    <span>♥</span>
+                    družbena omrežja
+                </h3>
+
+
+                <p>
+
+                    Vsak dan gledamo izbrane trenutke
+                    življenj drugih ljudi.
+
+                    Primerjanje svojega vsakdana z
+                    nečijimi najboljšimi trenutki lahko
+                    vpliva na naše počutje.
+
+                </p>
+
+
+                <a class="read" href="#">
+
+                    kmalu →
+
+                </a>
+
+            </div>
+
+
+
+            <div class="topic">
+
+                <h3>
+                    <span>♥</span>
+                    prijateljstva
+                </h3>
+
+
+                <p>
+
+                    Prijateljstva so lahko čudovita,
+                    ampak tudi zapletena.
+
+                    Prepiri, občutek izključenosti in
+                    strah pred tem, kaj si drugi mislijo,
+                    so izkušnje, ki jih pozna veliko
+                    najstnikov.
+
+                </p>
+
+
+                <a class="read" href="#">
+
+                    kmalu →
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= O STRANI ================= -->
+
+    <section id="about" class="about">
+
+
+        <h2>
+
+            zakaj ta stran obstaja? ♡
+
+        </h2>
+
+
+        <p>
+
+            Ker včasih ne potrebujemo nekoga,
+            ki nam reče:
+
+            <br>
+
+            <em>
+                "Samo bodi pozitiven/pozitivna."
+            </em>
+
+            <br><br>
+
+            Včasih potrebujemo nekoga,
+            ki reče:
+
+            <br><br>
+
+            <strong>
+
+                "Razumem. Nič ni narobe s tabo,
+                ker se tako počutiš."
+
+            </strong>
+
+            <br><br>
+
+            Ta stran je namenjena temu,
+            da bi bilo o težkih stvareh
+            malo lažje govoriti.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- ================= ZNANI LJUDJE ================= -->
+
+    <section id="stories">
+
+
+        <h2 class="section-title">
+
+            znani obrazi, resnični občutki
+
+            <span>♥</span>
+
+        </h2>
+
+
+
+        <div class="stories">
+
+
+            <!-- BILLIE EILISH -->
+
+            <div class="story">
+
+                <div class="name">
+
+                    Billie Eilish ♡
+
+                </div>
+
+
+                <p>
+
+                    Billie Eilish je javno govorila
+                    o duševnem zdravju, samopodobi
+                    in pritisku, ki ga lahko prinese
+                    življenje pod očmi javnosti.
+
+                </p>
+
+
+                <a href="billie-eilish.html">
+
+                    preberi zgodbo →
+
+                </a>
+
+            </div>
+
+
+
+            <!-- LADY GAGA -->
+
+            <div class="story">
+
+                <div class="name">
+
+                    Lady Gaga ♡
+
+                </div>
+
+
+                <p>
+
+                    Lady Gaga je javno spregovorila
+                    o svojem duševnem zdravju,
+                    težkih izkušnjah in pomembnosti
+                    podpore ter pogovora.
+
+                </p>
+
+
+                <a href="lady-gaga.html">
+
+                    preberi zgodbo →
+
+                </a>
+
+            </div>
+
+
+
+            <!-- DWAYNE JOHNSON -->
+
+            <div class="story">
+
+                <div class="name">
+
+                    Dwayne Johnson ♡
+
+                </div>
+
+
+                <p>
+
+                    Dwayne Johnson je javno govoril
+                    o depresiji in težkih obdobjih
+                    svojega življenja ter o tem,
+                    kako pomembno je govoriti o
+                    duševnem zdravju.
+
+                </p>
+
+
+                <a href="dwayne-johnson.html">
+
+                    preberi zgodbo →
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    <p>
+        narejeno s
+        <span class="heart">♥</span>
+        za vse, ki včasih potrebujejo
+        majhen opomnik, da niso sami.
+    </p>
+
+    <p>
+        avtor: <strong>Ema Zakelšek</strong> ♡
+    </p>
+
+</footer>
+
+</body>
+
+</html>
