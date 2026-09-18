@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="sl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chat ♡ Give Yourself A Reason</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #fff7fb;
+            color: #3b2632;
+            font-family: "Times New Roman", serif;
+        }
+
+        header {
+            text-align: center;
+            padding: 25px 10px 18px;
+            border-bottom: 1px dashed #d9a9bf;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            margin: 8px 0 15px;
+            font-style: italic;
+        }
+
+        nav a {
+            color: #3b2632;
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #d95b83;
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 45px 20px 25px;
+        }
+
+        .intro h2 {
+            margin: 0 0 10px;
+            font-size: 34px;
+            font-weight: normal;
+        }
+
+        .heart {
+            color: #d95b83;
+        }
+
+        .intro p {
+            font-size: 17px;
+            line-height: 1.5;
+            margin: auto;
+            max-width: 650px;
+        }
+
+        /* ================= VZDEVEK ================= */
+
+        .nickname-box {
+            max-width: 480px;
+            margin: 25px auto;
+            text-align: center;
+            padding: 25px;
+            background: #fffdfd;
+            border-top: 1px dashed #d9a9bf;
+            border-bottom: 1px dashed #d9a9bf;
+        }
+
+        .nickname-box h3 {
+            margin: 0 0 8px;
+            font-size: 23px;
+            font-weight: normal;
+        }
+
+        .nickname-box p {
+            font-size: 15px;
+            line-height: 1.5;
+            margin: 8px 0 18px;
+        }
+
+        input {
+            width: 75%;
+            padding: 11px;
+            border: 1px solid #d9a9bf;
+            background: white;
+            color: #3b2632;
+            font-family: "Times New Roman", serif;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #d95b83;
+        }
+
+        button {
+            padding: 10px 18px;
+            margin-top: 12px;
+            border: 1px solid #d9a9bf;
+            background: #fceaf2;
+            color: #3b2632;
+            font-family: "Times New Roman", serif;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #f7dce8;
+        }
+
+        /* ================= CHAT ================= */
+
+        .chat-area {
+            display: none;
+            margin: 35px auto 0;
+        }
+
+        .chat-top {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .chat-top .small {
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .messages {
+            height: 390px;
+            overflow-y: auto;
+            background: white;
+            border-top: 1px dashed #d9a9bf;
+            border-bottom: 1px dashed #d9a9bf;
+            padding: 22px;
+        }
+
+        .message {
+            margin-bottom: 17px;
+            line-height: 1.45;
+        }
+
+        .message .name {
+            color: #d95b83;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .message .text {
+            font-size: 16px;
+            word-wrap: break-word;
+        }
+
+        .empty {
+            text-align: center;
+            margin-top: 150px;
+            color: #98717f;
+            font-style: italic;
+        }
+
+        .write {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .write input {
+            width: 100%;
+            margin: 0;
+        }
+
+        .write button {
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .rules {
+            margin: 35px auto;
+            max-width: 650px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #6e505d;
+        }
+
+        .back {
+            text-align: center;
+            margin: 45px 0 10px;
+        }
+
+        .back a {
+            color: #d95b83;
+            text-decoration: none;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 10px;
+            border-top: 1px dashed #d9a9bf;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #d95b83;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+
+            .intro h2 {
+                font-size: 29px;
+            }
+
+            input {
+                width: 100%;
+            }
+
+            .write {
+                flex-direction: column;
+            }
+
+            .write button {
+                width: 100%;
+            }
+
+            .messages {
+                height: 350px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        ♥ GIVE YOURSELF A REASON ♥
+    </h1>
+
+    <p>
+        majhen kotiček interneta za resnične občutke
+    </p>
+
+    <nav>
+
+        <a href="index.html">
+            začetek
+        </a>
+
+        ♥
+
+        <a href="home.html">
+            domov
+        </a>
+
+        ♥
+
+        <a href="home.html#topics">
+            občutki
+        </a>
+
+        ♥
+
+        <a href="home.html#stories">
+            zgodbe
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+
+    <section class="intro">
+
+        <h2>
+            pogovori <span class="heart">♡</span>
+        </h2>
+
+        <p>
+            Tukaj lahko napišeš nekaj prijaznega,
+            deliš misel ali se samo malo pogovarjaš.
+            Ni ti treba uporabiti svojega pravega imena.
+        </p>
+
+    </section>
+
+
+    <!-- ================= VZDEVEK ================= -->
+
+    <section class="nickname-box" id="nicknameBox">
+
+        <h3>
+            najprej izberi svoj vzdevek ♡
+        </h3>
+
+        <p>
+            Izberi si ime, pod katerim želiš pisati.
+            Uporabi vzdevek in ne osebnih podatkov.
+        </p>
+
+        <input
+            type="text"
+            id="nickname"
+            maxlength="20"
+            placeholder="tvoj vzdevek..."
+            autocomplete="off"
+        >
+
+        <br>
+
+        <button onclick="enterChat()">
+            vstopi v chat ♡
+        </button>
+
+    </section>
+
+
+    <!-- ================= CHAT ================= -->
+
+    <section class="chat-area" id="chatArea">
+
+        <div class="chat-top">
+
+            <div>
+                trenutno pišeš kot
+                <strong id="currentNickname"></strong>
+                ♡
+            </div>
+
+            <div class="small">
+                prijaznost naj bo pravilo tega prostora
+            </div>
+
+        </div>
+
+
+        <div class="messages" id="messages">
+
+            <div class="empty" id="emptyMessage">
+                tukaj še ni sporočil...<br>
+                mogoče bo tvoje prvo. ♡
+            </div>
+
+        </div>
+
+
+        <div class="write">
+
+            <input
+                type="text"
+                id="messageInput"
+                maxlength="300"
+                placeholder="napiši nekaj..."
+                autocomplete="off"
+                onkeydown="handleEnter(event)"
+            >
+
+            <button onclick="sendMessage()">
+                pošlji ♡
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="rules">
+
+        ♡ Brez žaljenja, norčevanja ali pritiskanja na druge.<br>
+        ♡ Ne objavljaj svojega polnega imena, naslova, telefonske številke
+        ali drugih osebnih podatkov.<br>
+        ♡ Če ti je res težko, je pomembno, da se obrneš tudi na odraslo osebo,
+        ki ji zaupaš.
+
+    </section>
+
+
+    <div class="back">
+
+        <a href="home.html">
+            ← nazaj na GIVE YOURSELF A REASON
+        </a>
+
+    </div>
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        narejeno s
+        <span class="heart">♥</span>
+        za vse, ki včasih potrebujejo
+        majhen opomnik, da niso sami.
+    </p>
+
+    <p>
+        avtor: <strong>Ema Zakelšek</strong> ♡
+    </p>
+
+</footer>
+
+
+<script>
+
+    let nickname = "";
+
+    function enterChat() {
+
+        const input = document.getElementById("nickname");
+        const value = input.value.trim();
+
+        if (value === "") {
+            alert("Najprej izberi svoj vzdevek ♡");
+            return;
+        }
+
+        nickname = value;
+
+        document.getElementById("currentNickname").textContent = nickname;
+        document.getElementById("nicknameBox").style.display = "none";
+        document.getElementById("chatArea").style.display = "block";
+
+        document.getElementById("messageInput").focus();
+
+    }
+
+
+    function sendMessage() {
+
+        const input = document.getElementById("messageInput");
+        const text = input.value.trim();
+
+        if (text === "") {
+            return;
+        }
+
+        const emptyMessage = document.getElementById("emptyMessage");
+
+        if (emptyMessage) {
+            emptyMessage.remove();
+        }
+
+        const message = document.createElement("div");
+        message.className = "message";
+
+        const name = document.createElement("div");
+        name.className = "name";
+        name.textContent = nickname + " ♡";
+
+        const messageText = document.createElement("div");
+        messageText.className = "text";
+        messageText.textContent = text;
+
+        message.appendChild(name);
+        message.appendChild(messageText);
+
+        document.getElementById("messages").appendChild(message);
+
+        input.value = "";
+        input.focus();
+
+        const messages = document.getElementById("messages");
+        messages.scrollTop = messages.scrollHeight;
+
+    }
+
+
+    function handleEnter(event) {
+
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
