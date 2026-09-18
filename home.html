@@ -233,6 +233,79 @@
         }
 
 
+
+        /* ================= POSEBNI KOTIČEK ================= */
+
+        .special-corner {
+            margin: 65px auto 0;
+            max-width: 900px;
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        .special-note {
+            width: 280px;
+            min-height: 145px;
+            padding: 22px 20px;
+            background: #fffdfd;
+            position: relative;
+            text-align: center;
+            box-shadow: 6px 7px 0 #f1d6e2;
+            border-top: 1px solid #e8bfd0;
+            border-left: 1px dashed #d9a9bf;
+            border-right: 1px dashed #d9a9bf;
+            border-bottom: 1px dashed #d9a9bf;
+            transform: rotate(-1.5deg);
+        }
+
+        .special-note:nth-child(2) {
+            transform: rotate(1.5deg);
+            background: #fff9fc;
+        }
+
+        .special-note:hover {
+            transform: rotate(0deg) translateY(-4px);
+        }
+
+        .special-note .tiny-heart {
+            color: #d95b83;
+            font-size: 19px;
+            letter-spacing: 3px;
+        }
+
+        .special-note h3 {
+            margin: 8px 0 7px;
+            font-size: 23px;
+            font-weight: normal;
+        }
+
+        .special-note p {
+            margin: 0 0 13px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .special-note a {
+            color: #d95b83;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .special-note a:hover {
+            text-decoration: underline;
+        }
+
+        .special-note::before {
+            content: "♡";
+            position: absolute;
+            top: 7px;
+            right: 12px;
+            color: #e8bfd0;
+            font-size: 17px;
+        }
+
         @media (max-width: 700px) {
 
             .topics {
@@ -546,6 +619,49 @@
 
     </section>
 
+
+
+
+    <!-- ================= POGOVORI IN IDEJE ================= -->
+
+    <section class="special-corner">
+
+        <div class="special-note">
+
+            <div class="tiny-heart">♡ ♥ ♡</div>
+
+            <h3>pogovori</h3>
+
+            <p>
+                prostor za prijazen pogovor,
+                vprašanja in misli.
+            </p>
+
+            <a href="chat.html">
+                vstopi v chat →
+            </a>
+
+        </div>
+
+
+        <div class="special-note">
+
+            <div class="tiny-heart">✦ ♡ ✦</div>
+
+            <h3>tvoje ideje</h3>
+
+            <p>
+                Imaš idejo za stran?
+                Povej mi, kaj bi rada videla tukaj.
+            </p>
+
+            <a href="chat.html#idea">
+                pošlji idejo →
+            </a>
+
+        </div>
+
+    </section>
 
 
     <!-- ================= O STRANI ================= -->
