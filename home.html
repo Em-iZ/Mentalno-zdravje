@@ -25,6 +25,7 @@
 
 
         header {
+            position: relative;
             text-align: center;
             padding: 25px 10px 15px;
             border-bottom: 1px dashed #d9a9bf;
@@ -92,7 +93,7 @@
         }
 
 
-        .nickname-box{position:absolute;top:18px;right:18px;width:230px;background:#fff;border:1px dashed #d9a9bf;box-shadow:4px 4px 0 #e8bfd0;padding:12px 14px;text-align:center}.nickname-box h3{margin:0 0 6px;font-size:20px;font-weight:normal}.nickname-box p{margin:0 0 10px;font-size:14px}.nickname-box a{display:inline-block;padding:7px 12px;background:#fcebf3;border:1px dashed #a95778;color:#713b54;text-decoration:none;font-size:14px}.nickname-box a:hover{text-decoration:underline}.nickname-box h3{margin:0 0 9px;font-size:24px;font-weight:normal}.nickname-box p{margin:0 0 15px;font-size:16px}.nickname-box a{display:inline-block;padding:10px 22px;background:#fcebf3;border:1px dashed #a95778;color:#713b54;text-decoration:none;font-size:16px}.nickname-box a:hover{text-decoration:underline}\n\n        .section-title {
+        .nickname-box{position:absolute;top:10px;right:18px;width:205px;background:#fff;border:1px dashed #d9a9bf;box-shadow:3px 3px 0 #e8bfd0;padding:7px 10px;text-align:center}.nickname-box h3{margin:0 0 3px;font-size:16px;font-weight:normal}.nickname-box p{margin:0 0 5px;font-size:12px}.nickname-box a{display:inline-block;padding:4px 8px;background:#fcebf3;border:1px dashed #a95778;color:#713b54;text-decoration:none;font-size:12px}.nickname-box a:hover{text-decoration:underline}\n\n        .section-title {
             text-align: center;
             font-size: 28px;
             font-weight: normal;
@@ -312,6 +313,9 @@
         }
 
         @media (max-width: 700px) {
+
+            .nickname-box{position:static;width:min(205px,90%);margin:10px auto 12px;}
+
 
             .topics {
                 grid-template-columns: 1fr;
