@@ -180,6 +180,7 @@
 
     </style>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script>
 </head>
 
 
@@ -535,6 +536,35 @@
 
 </div>
 
+
+<!-- SITE ACCOUNT WIDGET -->
+<style>
+.site-user-box{position:fixed;top:14px;right:14px;z-index:9999;display:none;align-items:center;gap:9px;padding:7px 11px;background:rgba(255,255,255,.96);border:1px solid #d9a9bf;box-shadow:3px 3px 0 #e8bfd0;color:#3b2632;font:14px "Times New Roman",serif}
+.site-user-box a{color:#d95b83;text-decoration:none}
+.site-user-box a:hover{text-decoration:underline}
+.site-user-box .user-heart{color:#d95b83}
+@media(max-width:600px){.site-user-box{top:8px;right:8px;font-size:12px;padding:6px 8px}}
+</style>
+<div class="site-user-box" id="siteUserBox">
+  <span class="user-heart">♡</span>
+  <span id="siteNickname"></span>
+  <span>·</span>
+  <a href="home.html">domov</a>
+</div>
+<script>
+(async function(){
+  if(!window.supabase || !window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) return;
+  const {createClient}=window.supabase;
+  const client=createClient(window.SUPABASE_URL,window.SUPABASE_ANON_KEY);
+  const {data:{session}}=await client.auth.getSession();
+  if(!session || !session.user) return;
+  const profile=await client.from('profiles').select('nickname').eq('user_id',session.user.id).maybeSingle();
+  if(profile.data && profile.data.nickname){
+    document.getElementById('siteNickname').textContent=profile.data.nickname;
+    document.getElementById('siteUserBox').style.display='flex';
+  }
+})();
+</script>
 
 </body>
 
