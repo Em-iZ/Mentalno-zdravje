@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prijava ♡</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff7fb;color:#3b2632;font-family:"Times New Roman",serif;font-size:17px}
+main{max-width:560px;margin:70px auto;padding:20px}.box{background:#fff;border:1px dashed #d9a9bf;box-shadow:6px 7px 0 #f1d6e2;padding:30px}
+h1{text-align:center;color:#9b4f70;font-size:38px;font-weight:normal}.hearts{text-align:center;color:#c47798;letter-spacing:5px}
+label{display:block;margin:18px 0 7px;color:#75465a;font-weight:bold}input{width:100%;padding:12px;border:1px dashed #c98ba8;background:#fffafd;font:16px "Times New Roman",serif}
+button{display:block;margin:20px auto 8px;padding:11px 25px;border:1px dashed #a95778;background:#fcebf3;color:#713b54;font:17px "Times New Roman",serif;cursor:pointer}
+button:hover{background:#f8dce9}.switch{text-align:center;color:#765463}.switch a{color:#9b4f70}.status{text-align:center;margin-top:18px;line-height:1.5}
+</style></head>
+<body><main><section class="box"><div class="hearts">♡ ♥ ♡</div><h1 id="title">Ustvari račun</h1>
+<p class="switch" id="description">Za shranjevanje pogovorov potrebuješ svoj račun.</p>
+<form id="authForm"><label for="email">e-pošta</label><input id="email" type="email" required autocomplete="email">
+<label for="password">geslo</label><input id="password" type="password" minlength="8" required autocomplete="new-password">
+<button id="submit" type="submit">ustvari račun ♡</button></form>
+<p class="switch"><a href="#" id="toggle">Že imam račun</a></p><p class="status" id="status"></p></section></main>
+<script>
+const {createClient}=supabase;
+if(window.SUPABASE_URL.includes("YOUR_")){document.getElementById("status").textContent="Najprej nastavi Supabase URL in anon ključ v supabase-config.js."}
+const client=createClient(window.SUPABASE_URL,window.SUPABASE_ANON_KEY);
+let signup=true;
+const $=id=>document.getElementById(id);
+$("toggle").onclick=e=>{e.preventDefault();signup=!signup;$("title").textContent=signup?"Ustvari račun":"Prijava";$("description").textContent=signup?"Za shranjevanje pogovorov potrebuješ svoj račun.":"Prijavi se v svoj račun in nadaljuj pogovor."; $("submit").textContent=signup?"ustvari račun ♡":"prijavi se ♡";$("password").autocomplete=signup?"new-password":"current-password";$("toggle").textContent=signup?"Že imam račun":"Še nimam računa"};
+$("authForm").onsubmit=async e=>{e.preventDefault();$("status").textContent="";const email=$("email").value.trim(),password=$("password").value;
+let result=signup?await client.auth.signUp({email,password}):await client.auth.signInWithPassword({email,password});
+if(result.error){$("status").textContent=result.error.message;return}
+if(signup && !result.data.session){$("status").textContent="Račun je ustvarjen. Preveri e-pošto za potrditev, nato se prijavi."}
+else location.href="chat.html";
+};
+</script></body></html>
