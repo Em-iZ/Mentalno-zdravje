@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin ♡</title>
+<style>
+*{box-sizing:border-box} body{margin:0;background:#fff7fb;color:#3b2632;font-family:"Times New Roman",serif;font-size:17px}
+header{text-align:center;padding:45px 20px 30px;border-bottom:2px dashed #d9a9bf} h1{margin:0;color:#9b4f70;font-size:42px;letter-spacing:1px}.subtitle{margin-top:10px;color:#765463;font-style:italic}
+.container{max-width:850px;margin:45px auto;padding:0 20px}.box{background:#fff;border:1px dashed #d9a9bf;box-shadow:6px 7px 0 #f1d6e2;padding:30px;margin-bottom:30px}h2{text-align:center;color:#9b4f70;margin-top:0}.hearts{text-align:center;color:#c47798;letter-spacing:5px;margin-bottom:18px}
+label{display:block;margin:18px 0 7px;color:#75465a;font-weight:bold}input{width:100%;padding:12px;border:1px dashed #c98ba8;background:#fffafd;color:#3b2632;font:16px "Times New Roman",serif}button{display:block;margin:22px auto 5px;padding:11px 25px;border:1px dashed #a95778;background:#fcebf3;color:#713b54;font:17px "Times New Roman",serif;cursor:pointer}button:hover{background:#f8dce9}.note{text-align:center;color:#765463;font-size:15px;line-height:1.5}#adminPanel{display:none}.idea{background:#fffafd;border:1px dashed #d9a9bf;padding:18px;margin:18px 0}.idea strong{color:#9b4f70}.idea-text{margin-top:10px;line-height:1.5;white-space:pre-wrap}.empty{text-align:center;color:#765463;font-style:italic}.danger{background:#fff0f5}footer{text-align:center;border-top:2px dashed #d9a9bf;padding:25px 20px;color:#765463;margin-top:55px}
+@media(max-width:600px){h1{font-size:32px}.box{padding:22px}}
+</style>
+</head>
+<body>
+<header><h1>♥ GIVE YOURSELF A REASON ♥</h1><div class="subtitle">zasebni admin kotiček ♡</div></header>
+<div class="container">
+<section class="box" id="loginBox"><div class="hearts">♡ ♥ ♡</div><h2>samo zate</h2><p class="note">Ta stran je namenjena samo tebi. Tukaj boš lahko pregledovala prejete ideje.</p><label for="password">geslo</label><input type="password" id="password" placeholder="vpiši geslo"><button onclick="login()">vstopi ♡</button><p class="note">To je trenutno lokalna/testna prijava. Za javno spletno stran je treba prijavo zaščititi tudi na strežniški strani.</p></section>
+<section class="box" id="adminPanel"><div class="hearts">✦ ♡ ✦</div><h2>prejete ideje</h2><div id="ideasList"></div><button onclick="logout()">odjava</button></section>
+</div>
+<footer>GIVE YOURSELF A REASON ♡<br>zasebni del strani</footer>
+<script>
+const TEST_PASSWORD="MOJE_GESLO";
+function login(){if(document.getElementById('password').value===TEST_PASSWORD){document.getElementById('loginBox').style.display='none';document.getElementById('adminPanel').style.display='block';showIdeas()}else alert('Napačno geslo ♡')}
+function logout(){document.getElementById('adminPanel').style.display='none';document.getElementById('loginBox').style.display='block';document.getElementById('password').value=''}
+function showIdeas(){const list=document.getElementById('ideasList');const ideas=JSON.parse(localStorage.getItem('siteIdeas')||'[]');if(!ideas.length){list.innerHTML='<p class="empty">Trenutno še ni shranjenih idej. ♡</p>';return}list.innerHTML=ideas.map((x,i)=>`<div class="idea"><strong>♡ ${escapeHtml(x.nickname||'brez vzdevka')}</strong><div class="idea-text">${escapeHtml(x.idea||'')}</div><button class="danger" onclick="deleteIdea(${i})">izbriši</button></div>`).join('')}
+function deleteIdea(i){const ideas=JSON.parse(localStorage.getItem('siteIdeas')||'[]');ideas.splice(i,1);localStorage.setItem('siteIdeas',JSON.stringify(ideas));showIdeas()}
+function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+</script>
+</body>
+</html>
