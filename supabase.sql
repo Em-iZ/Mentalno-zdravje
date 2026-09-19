@@ -18,6 +18,23 @@ create or replace function public.is_admin() returns boolean language sql securi
 revoke all on function public.is_admin() from public;
 grant execute on function public.is_admin() to authenticated;
 
+create or replace function public.nickname_available(p_nickname text)
+returns boolean
+language sql
+security definer
+set search_path=public
+stable
+as $
+  select
+    lower(trim(p_nickname)) not in ('emi','emihost')
+    and not exists (
+      select 1 from public.profiles
+      where lower(nickname)=lower(trim(p_nickname))
+    );
+$;
+revoke all on function public.nickname_available(text) from public;
+grant execute on function public.nickname_available(text) to anon, authenticated;
+
 drop policy if exists "users read own profile" on public.profiles;
 drop policy if exists "users create own profile" on public.profiles;
 drop policy if exists "users update own profile" on public.profiles;
