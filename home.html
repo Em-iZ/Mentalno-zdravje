@@ -870,7 +870,29 @@
 
 </footer>
 
-<!-- SITE ACCOUNT WIDGET --><style>.site-user-box{position:fixed;top:14px;right:14px;z-index:9999;display:none;align-items:center;gap:9px;padding:7px 11px;background:rgba(255,255,255,.96);border:1px solid #d9a9bf;box-shadow:3px 3px 0 #e8bfd0;color:#3b2632;font:14px "Times New Roman",serif}.site-user-box a{color:#d95b83;text-decoration:none}.site-user-box a:hover{text-decoration:underline}.site-user-box .user-heart{color:#d95b83}@media(max-width:600px){.site-user-box{top:8px;right:8px;font-size:12px;padding:6px 8px}}</style><div class="site-user-box" id="siteUserBox"><span class="user-heart">♡</span><span id="siteNickname"></span><span>·</span><a href="home.html">domov</a></div><script>(async function(){if(!window.supabase||!window.SUPABASE_URL||!window.SUPABASE_ANON_KEY)return;const {createClient}=window.supabase;const client=createClient(window.SUPABASE_URL,window.SUPABASE_ANON_KEY);const {data:{session}}=await client.auth.getSession();if(!session||!session.user)return;const profile=await client.from('profiles').select('nickname').eq('user_id',session.user.id).maybeSingle();if(profile.data&&profile.data.nickname){document.getElementById('nicknameText').textContent='Prijavljen/a si kot: '+profile.data.nickname+' ♡';document.getElementById('nicknameLink').textContent='vstopi v chat →';document.getElementById('nicknameLink').href='chat.html';document.getElementById('siteNickname').textContent=profile.data.nickname;document.getElementById('siteUserBox').style.display='flex';}})();</script>
+<!-- SITE ACCOUNT WIDGET --><style>
+.site-user-box{position:fixed;top:14px;right:14px;z-index:9999;display:none;background:rgba(255,255,255,.97);border:1px solid #d9a9bf;box-shadow:3px 3px 0 #e8bfd0;color:#3b2632;font:15px "Times New Roman",serif;min-width:150px}
+.site-user-name{display:block;width:100%;padding:9px 13px;background:transparent;border:0;color:#3b2632;font:15px "Times New Roman",serif;text-align:center;cursor:pointer}
+.site-user-name:hover{background:#fff7fb}
+.site-logout{display:none;width:100%;padding:8px 13px;border:0;border-top:1px dashed #d9a9bf;background:#fcebf3;color:#713b54;font:14px "Times New Roman",serif;cursor:pointer}
+.site-logout:hover{text-decoration:underline}
+@media(max-width:600px){.site-user-box{top:8px;right:8px}}
+</style>
+<div class="site-user-box" id="siteUserBox"><button class="site-user-name" id="siteUserName"></button><button class="site-logout" id="siteLogout">odjava ♡</button></div>
+<script>
+(async function(){
+ if(!window.supabase||!window.SUPABASE_URL||!window.SUPABASE_ANON_KEY)return;
+ const {createClient}=window.supabase,client=createClient(window.SUPABASE_URL,window.SUPABASE_ANON_KEY);
+ const {data:{session}}=await client.auth.getSession();
+ if(!session||!session.user)return;
+ const profile=await client.from('profiles').select('nickname').eq('user_id',session.user.id).maybeSingle();
+ if(profile.data&&profile.data.nickname){
+   const box=document.getElementById('siteUserBox'),name=document.getElementById('siteUserName'),logout=document.getElementById('siteLogout');
+   name.textContent=profile.data.nickname; box.style.display='block';
+   name.onclick=()=>{logout.style.display=logout.style.display==='block'?'none':'block'};
+   logout.onclick=async()=>{await client.auth.signOut();location.reload()};
+ }
+})();
+</script>
 </body>
-
 </html>
