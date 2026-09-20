@@ -869,13 +869,13 @@
 .site-logout{display:none;width:100%;padding:8px 13px;border:0;border-top:1px dashed #d9a9bf;background:#fcebf3;color:#713b54;font:14px "Times New Roman",serif;cursor:pointer}
 @media(max-width:600px){.site-user-box{top:8px;right:8px}}
 </style>
-<div class="site-user-box" id="siteUserBox"><button class="site-user-name" id="siteUserName"></button><button class="site-logout" id="siteLogout">odjava ♡</button></div>
+<div class="site-user-box" id="siteUserBox"><button class="site-user-name" id="siteUserName">prijava ♡</button><button class="site-logout" id="siteLogout">odjava ♡</button></div>
 <script>
 (async function(){
  if(!window.supabase||!window.SUPABASE_URL||!window.SUPABASE_ANON_KEY)return;
  const client=supabase.createClient(window.SUPABASE_URL,window.SUPABASE_ANON_KEY);
  const {data:{session}}=await client.auth.getSession();
- if(!session||!session.user)return;
+ if(!session||!session.user){document.getElementById('siteUserBox').style.display='block';document.getElementById('siteUserName').onclick=()=>location.href='login.html';return;}
  const p=await client.from('profiles').select('nickname').eq('user_id',session.user.id).maybeSingle();
  const a=await client.rpc('is_admin');
  const nickname=p.data?.nickname||(a.data?'Emi':'');
